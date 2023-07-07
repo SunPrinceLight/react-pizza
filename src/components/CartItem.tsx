@@ -1,5 +1,5 @@
 import React from "react";
-import {addItem, removeItem, minusItem} from "../redux/slices/cartSlice.ts";
+import {addItem, removeItem, minusItem} from "../redux/slices/cart/slice.ts";
 
 import {useDispatch} from "react-redux";
 import {pizzaTypes} from "./PizzaBlock";
@@ -39,7 +39,7 @@ const CartItem:React.FC<CartItemProps> = ({id, title, price, imageUrl, size, typ
     }
 
     const onClickRemove = () => {
-        if(window.confirm('Ты внатуре долбаеб???')){
+        if(window.confirm('Удалить из корзины?')){
             dispatch(removeItem(id));
         }
     }

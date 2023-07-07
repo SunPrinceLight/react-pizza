@@ -1,22 +1,10 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 
-import {setSort} from "../redux/slices/filterSlice.ts";
-import {RootState} from "../redux/store.ts";
+import {setSort} from "../redux/slices/filter/slice.ts";
+//import {RootState} from "../redux/store.ts";
 
-export enum SortPropertyEnum {
-    RATING_DESC = 'rating',
-    RATING_ASC = '-rating',
-    TITLE_DESC = 'title',
-    TITLE_ASC = '-title',
-    PRICE_DESC = 'price',
-    PRICE_ASC = '-price',
-}
-
-export type SortItemType = {
-    name:string;
-    sortProperty: SortPropertyEnum;
-};
+import {SortItemType, SortPropertyEnum} from "../redux/slices/filter/types.ts";
 
 // совмещение типа со свои кастомным
 //type PopupClick = React.MouseEvent<HTMLBodyElement> & {
@@ -36,7 +24,7 @@ export const sorts: SortItemType[] = [
 const Sort: React.FC<SortItemType> = ( propsSort) => {
 
     const dispatch = useDispatch();
-    const sort = useSelector((state: RootState) => state.filter.sort);
+    //const sort = useSelector((state: RootState) => state.filter.sort);
     const sortRef = React.useRef<HTMLDivElement>(null);
 
     const[isPopupOpen, setIsPopupOpen] = React.useState(false);

@@ -1,17 +1,10 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import axios from "axios";
-import {RootState} from "../store.ts";
 
-import { SortItemType } from "../../components/Sort.tsx";
+import {SearchPizzaParams, Status, Pizza, PizzaSliceState} from "./type.ts";
 
 //type FetchPizzasArgs = Record<string, string>
 
-export type SearchPizzaParams = {
-    category: string,
-    sortBy: string,
-    order: string,
-    search: string,
-}
 export const fetchPizzas = createAsyncThunk(
     'pizza/fetchPizzasStatus',
     async (params:  SearchPizzaParams) => {
@@ -22,27 +15,6 @@ export const fetchPizzas = createAsyncThunk(
         return data;
     }
 );
-
-type Pizza = {
-    id:string,
-    title:string,
-    price:number,
-    imageUrl:string,
-    sizes:number[],
-    types:number[],
-    count:number,
-}
-
-enum Status {
-    LOADING = 'loading',
-    SUCCESS= 'success',
-    ERROR = 'error',
-}
-
-interface PizzaSliceState {
-    items: Pizza[],
-    status: 'loading' | 'success' | 'error',
-}
 
 const initialState: PizzaSliceState = {
     items: [],
@@ -71,7 +43,6 @@ const pizzaSlice = createSlice({
             state.items = [];
         });
     },
-
     // extraReducers: {
     //     [fetchPizzas.pending]: (state) =>{
     //         state.status = 'loading';
@@ -87,8 +58,6 @@ const pizzaSlice = createSlice({
     //     },
     // },
 });
-
-export const selectPizzaData = (state: RootState) => state.pizza;
 
 // Action creators are generated for each case reducer function
 export const { setItems} = pizzaSlice.actions;

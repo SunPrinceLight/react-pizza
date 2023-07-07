@@ -3,9 +3,11 @@ import {useSelector} from "react-redux";
 import qs from "qs";
 import {useNavigate} from "react-router-dom";
 
-import {selectFilter, setActiveCategory} from "../redux/slices/filterSlice.ts";
-import { setFilters } from "../redux/slices/filterSlice.ts";
-import {fetchPizzas, selectPizzaData} from "../redux/slices/pizzaSlice.ts";
+import { setActiveCategory, setFilters } from "../redux/slices/filter/slice.ts";
+import { selectFilter } from "../redux/slices/filter/selectors.ts";
+
+import { fetchPizzas } from "../redux/slices/pizza/slice.ts";
+import { selectPizzaData } from "../redux/slices/pizza/selectors.ts"
 
 import Categories from "../components/Categories";
 import Sort, {sorts} from "../components/Sort";

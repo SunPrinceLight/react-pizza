@@ -5,17 +5,25 @@ import logoSvg from '../assets/img/pizza-logo.svg';
 import {Link, Outlet, useLocation} from "react-router-dom";
 
 import Search from "./Search/Search.tsx";
-import {cartSelector} from "../redux/slices/cartSlice.ts";
+import {cartSelector} from "../redux/slices/cart/selectors.ts";
 
 
 
 function Header() {
     const {items, totalPrice} = useSelector(cartSelector);
-
     const location = useLocation();
-
     const totalCount = items.reduce((sum:number, item:any) => sum + item.count, 0);
+    const isMounted = React.useRef(false);
 
+
+    React.useEffect(() => {
+        if (isMounted.current){
+            const json = JSON.stringify(items);
+            localStorage.setItem('cart', json);
+            console.log(json);
+        }
+        isMounted.current = true;
+    }, [items]);
 
     return(
         <div className="wrapper">

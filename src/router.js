@@ -7,7 +7,7 @@ import React from "react";
 import FullPizza from "./pages/FullPizza";
 
 const routers = createBrowserRouter(createRoutesFromElements(
-    <Route path="/" element={<Header/>} errorElement={<NotFound/>}>
+    <Route path="/" element={<Header/>} errorElement={<NotFound/>} >
         <Route index element={<Home />} />
         <Route path="cart" element={<Cart />} />
         <Route path="pizza/:id" element={<FullPizza />} />
