@@ -19,7 +19,7 @@ const FullPizza: React.FC = () => {
                 console.log( data );
                 setPizza(data);
             } catch (error) {
-                alert('Ошибка, такой питсы нет')
+                alert('Ошибка, такой питсы нет!!!!!')
                 navigate('/');
             }
         }
