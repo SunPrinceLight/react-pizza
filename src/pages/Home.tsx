@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 import { setActiveCategory, setFilters } from "../redux/slices/filter/slice.ts";
 import { selectFilter } from "../redux/slices/filter/selectors.ts";
 
-import { fetchPizzas } from "../redux/slices/pizza/slice.ts";
+import { fetchPizzas } from "../redux/slices/pizza/asyncFunctions.ts";
 import { selectPizzaData } from "../redux/slices/pizza/selectors.ts"
 
 import Categories from "../components/Categories";
